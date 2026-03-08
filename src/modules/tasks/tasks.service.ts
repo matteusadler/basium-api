@@ -75,13 +75,14 @@ export class TasksService {
   }
 
   async create(companyId: string, userId: string, dto: CreateTaskDto) {
-    // Verify lead belongs to company
-    const lead = await this.prisma.lead.findFirst({
-      where: { id: dto.leadId, companyId },
-    })
-
-    if (!lead) {
-      throw new NotFoundException('Lead não encontrado')
+    // Verify lead belongs to company (only if leadId provided)
+    if (dto.leadId) {
+      const lead = await this.prisma.lead.findFirst({
+        where: { id: dto.leadId, companyId },
+      })
+      if (!lead) {
+        throw new NotFoundException('Lead não encontrado')
+      }
     }
 
     return this.prisma.task.create({
