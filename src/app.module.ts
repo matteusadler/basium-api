@@ -14,7 +14,7 @@ import { ErpModule } from './modules/erp/erp.module'
 // import { ConversationsModule } from './modules/conversations/conversations.module'
 // import { WhatsappModule } from './modules/whatsapp/whatsapp.module'
 import { AiModule } from './modules/ai/ai.module'
-import { FlowsModule } from './modules/flows/flows.module'
+// import { FlowsModule } from './modules/flows/flows.module'
 import { NotificationsModule } from './modules/notifications/notifications.module'
 // import { DocumentsModule } from './modules/documents/documents.module'
 // import { BillingModule } from './modules/billing/billing.module'
@@ -70,7 +70,7 @@ import { NotificationsModule } from './modules/notifications/notifications.modul
     // WhatsappModule,
     // ConversationsModule,
     AiModule,
-    FlowsModule,
+    // FlowsModule,
     NotificationsModule,
     // DocumentsModule,
     // BillingModule,
