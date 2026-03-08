@@ -10,6 +10,11 @@ export class UpdateTaskDto {
   @ApiPropertyOptional()
   @IsOptional()
   @IsString()
+  leadId?: string
+
+  @ApiPropertyOptional()
+  @IsOptional()
+  @IsString()
   description?: string
 
   @ApiPropertyOptional({ enum: ['CALL', 'WHATSAPP', 'VISIT', 'MEETING', 'PROPOSAL', 'OTHER'] })
