@@ -1,0 +1,32 @@
+export declare class CreateLeadDto {
+    name: string;
+    phone: string;
+    email?: string;
+    cpf?: string;
+    clientType?: string;
+    origin: string;
+    temperature?: string;
+    priority?: string;
+    tags?: string[];
+    propertyTypes?: string[];
+    minValue?: number;
+    maxValue?: number;
+    neighborhoods?: string[];
+    bedrooms?: number;
+    suites?: number;
+    parkingSpots?: number;
+    minArea?: number;
+    features?: string[];
+    paymentType?: string;
+    hasPropertySwap?: boolean;
+    financingStatus?: string;
+    monthlyIncome?: number;
+    purchaseDeadline?: string;
+    pipelineId?: string;
+    stageId?: string;
+    estimatedValue?: number;
+    nextAction?: string;
+    nextActionDate?: string;
+    userId?: string;
+    ignoreDuplicate?: boolean;
+}
