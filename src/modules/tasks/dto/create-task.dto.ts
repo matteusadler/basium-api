@@ -2,9 +2,10 @@ import { IsString, IsOptional, IsEnum, IsArray, IsDateString } from 'class-valid
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger'
 
 export class CreateTaskDto {
-  @ApiProperty({ description: 'Lead ID to link task to' })
+  @ApiPropertyOptional({ description: 'Lead ID to link task to' })
+  @IsOptional()
   @IsString()
-  leadId: string
+  leadId?: string
 
   @ApiProperty({ example: 'Ligar para cliente' })
   @IsString()
