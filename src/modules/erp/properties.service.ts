@@ -133,6 +133,10 @@ export class PropertiesService {
       throw new NotFoundException('Imóvel não encontrado')
     }
 
+    const contractCount = await this.prisma.contract.count({ where: { propertyId: id } })
+    if (contractCount > 0) {
+      throw new Error(`Este imovel possui ${contractCount} contrato(s) vinculado(s) e nao pode ser excluido. Encerre os contratos antes de excluir o imovel.`)
+    }
     await this.prisma.propertyMedia.deleteMany({ where: { propertyId: id } })
     return this.prisma.property.delete({ where: { id } })
   }
