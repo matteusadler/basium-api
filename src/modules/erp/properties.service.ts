@@ -133,6 +133,7 @@ export class PropertiesService {
       throw new NotFoundException('Imóvel não encontrado')
     }
 
+    await this.prisma.propertyMedia.deleteMany({ where: { propertyId: id } })
     return this.prisma.property.delete({ where: { id } })
   }
 
