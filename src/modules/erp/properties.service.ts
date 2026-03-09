@@ -69,6 +69,7 @@ export class PropertiesService {
       data: {
         companyId,
         code,
+        title: dto.title,
         type: dto.type,
         purpose: dto.purpose,
         status: dto.status || 'AVAILABLE',
