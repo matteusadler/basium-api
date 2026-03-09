@@ -10,6 +10,7 @@ exports.LeadsModule = void 0;
 const common_1 = require("@nestjs/common");
 const leads_service_1 = require("./leads.service");
 const leads_controller_1 = require("./leads.controller");
+const lead_tags_controller_1 = require("./lead-tags.controller");
 const prisma_module_1 = require("../../common/prisma/prisma.module");
 const flows_module_1 = require("../flows/flows.module");
 const notifications_module_1 = require("../notifications/notifications.module");
@@ -19,7 +20,7 @@ exports.LeadsModule = LeadsModule;
 exports.LeadsModule = LeadsModule = __decorate([
     (0, common_1.Module)({
         imports: [prisma_module_1.PrismaModule, flows_module_1.FlowsModule, notifications_module_1.NotificationsModule],
-        controllers: [leads_controller_1.LeadsController],
+        controllers: [leads_controller_1.LeadsController, lead_tags_controller_1.LeadTagsController],
         providers: [leads_service_1.LeadsService],
         exports: [leads_service_1.LeadsService],
     })

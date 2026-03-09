@@ -3,8 +3,8 @@ export declare class ReportsService {
     private prisma;
     constructor(prisma: PrismaService);
     getDashboardStats(companyId: string): Promise<{
-        leads: number;
-        tasks: number;
-        conversations: number;
+        leads: any;
+        tasks: any;
+        conversations: any;
     }>;
 }

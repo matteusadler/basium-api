@@ -4,28 +4,28 @@ export declare class DashboardController {
     constructor(dashboardService: DashboardService);
     getStats(req: any): Promise<{
         leads: {
-            total: number;
-            active: number;
-            won: number;
-            lost: number;
-            thisMonth: number;
+            total: any;
+            active: any;
+            won: any;
+            lost: any;
+            thisMonth: any;
             growth: number;
         };
         tasks: {
-            total: number;
-            pending: number;
-            overdue: number;
+            total: any;
+            pending: any;
+            overdue: any;
         };
         revenue: {
-            total: number;
-            thisMonth: number;
-            wonThisMonth: number;
+            total: any;
+            thisMonth: any;
+            wonThisMonth: any;
         };
         properties: {
-            total: number;
+            total: any;
         };
         contracts: {
-            active: number;
+            active: any;
         };
         conversionRate: number;
     }>;
@@ -35,70 +35,13 @@ export declare class DashboardController {
         perdidos: number;
         period: string;
     }[]>;
-    getPipelineStats(req: any): Promise<{
-        id: string;
-        name: string;
-        type: string;
-        stages: {
-            id: string;
-            name: string;
-            color: string;
-            order: number;
-            leadsCount: number;
-            probability: number;
-        }[];
-    }[]>;
-    getRecentActivity(req: any, limit?: string): Promise<({
-        type: "lead_created";
-        id: string;
-        title: string;
-        description: string;
-        temperature: import(".prisma/client").$Enums.Temperature;
-        stage: {
-            name: string;
-            color: string;
-        };
-        createdAt: Date;
-    } | {
-        type: "task_created";
-        id: string;
-        title: string;
-        description: string;
-        taskType: import(".prisma/client").$Enums.TaskType;
-        status: import(".prisma/client").$Enums.TaskStatus;
-        dueDate: Date;
-        createdAt: Date;
-    })[]>;
-    getTodayTasks(req: any): Promise<({
-        lead: {
-            id: string;
-            name: string;
-            phone: string;
-        };
-    } & {
-        id: string;
-        companyId: string;
-        createdAt: Date;
-        updatedAt: Date;
-        result: string | null;
-        type: import(".prisma/client").$Enums.TaskType;
-        tags: string[];
-        description: string | null;
-        title: string;
-        status: import(".prisma/client").$Enums.TaskStatus;
-        userId: string;
-        priority: import(".prisma/client").$Enums.Priority;
-        dueDate: Date;
-        dueTime: string | null;
-        leadId: string;
-    })[]>;
+    getPipelineStats(req: any): Promise<any>;
+    getRecentActivity(req: any, limit?: string): Promise<any[]>;
+    getTodayTasks(req: any): Promise<any>;
     getLeadsByTemperature(req: any): Promise<{
-        hot: number;
-        warm: number;
-        cold: number;
+        hot: any;
+        warm: any;
+        cold: any;
     }>;
-    getLeadsByOrigin(req: any): Promise<{
-        origin: string;
-        count: number;
-    }[]>;
+    getLeadsByOrigin(req: any): Promise<any>;
 }

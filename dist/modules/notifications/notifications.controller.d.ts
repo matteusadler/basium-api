@@ -2,34 +2,14 @@ import { NotificationsService } from './notifications.service';
 export declare class NotificationsController {
     private readonly notificationsService;
     constructor(notificationsService: NotificationsService);
-    findAll(user: any, limit?: string): Promise<{
-        id: string;
-        companyId: string;
-        createdAt: Date;
-        data: import("@prisma/client/runtime/library").JsonValue | null;
-        type: string;
-        title: string;
-        userId: string;
-        body: string;
-        read: boolean;
-    }[]>;
+    findAll(user: any, limit?: string): Promise<any>;
     getUnreadCount(user: any): Promise<{
-        count: number;
+        count: any;
     }>;
     markAllAsRead(user: any): Promise<{
         success: boolean;
     }>;
-    markAsRead(id: string, user: any): Promise<{
-        id: string;
-        companyId: string;
-        createdAt: Date;
-        data: import("@prisma/client/runtime/library").JsonValue | null;
-        type: string;
-        title: string;
-        userId: string;
-        body: string;
-        read: boolean;
-    }>;
+    markAsRead(id: string, user: any): Promise<any>;
     subscribe(user: any, body: {
         subscription: Record<string, unknown>;
     }): Promise<{

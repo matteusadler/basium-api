@@ -3,8 +3,8 @@ export declare class ReportsController {
     private reportsService;
     constructor(reportsService: ReportsService);
     getDashboardStats(user: any): Promise<{
-        leads: number;
-        tasks: number;
-        conversations: number;
+        leads: any;
+        tasks: any;
+        conversations: any;
     }>;
 }

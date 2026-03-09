@@ -82,11 +82,13 @@ let TasksService = class TasksService {
         return task;
     }
     async create(companyId, userId, dto) {
-        const lead = await this.prisma.lead.findFirst({
-            where: { id: dto.leadId, companyId },
-        });
-        if (!lead) {
-            throw new common_1.NotFoundException('Lead não encontrado');
+        if (dto.leadId) {
+            const lead = await this.prisma.lead.findFirst({
+                where: { id: dto.leadId, companyId },
+            });
+            if (!lead) {
+                throw new common_1.NotFoundException('Lead não encontrado');
+            }
         }
         return this.prisma.task.create({
             data: {

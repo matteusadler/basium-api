@@ -65,45 +65,7 @@ export declare class WhatsappService {
     private verifySignature;
     private enqueueMessage;
     private processStatusUpdate;
-    getUserByPhoneNumberId(phoneNumberId: string): Promise<{
-        company: {
-            id: string;
-            name: string;
-            createdAt: Date;
-            updatedAt: Date;
-            cnpj: string | null;
-            logo: string | null;
-            planId: string;
-            planStatus: import(".prisma/client").$Enums.PlanStatus;
-            trialEndsAt: Date | null;
-            stripeCustomerId: string | null;
-            stripeSubId: string | null;
-        };
-    } & {
-        id: string;
-        email: string;
-        companyId: string;
-        name: string;
-        passwordHash: string | null;
-        role: import(".prisma/client").$Enums.Role;
-        avatarUrl: string | null;
-        isActive: boolean;
-        emailVerified: boolean;
-        openaiKey: string | null;
-        wabaId: string | null;
-        phoneNumberId: string | null;
-        waAccessToken: string | null;
-        waPhone: string | null;
-        waConnectedAt: Date | null;
-        aiSystemPrompt: string | null;
-        aiEnabled: boolean;
-        aiWorkingHours: import("@prisma/client/runtime/library").JsonValue | null;
-        aiMaxMessages: number;
-        aiTransferKeywords: string[];
-        pushSubscription: import("@prisma/client/runtime/library").JsonValue | null;
-        createdAt: Date;
-        updatedAt: Date;
-    }>;
+    getUserByPhoneNumberId(phoneNumberId: string): Promise<any>;
     sendTextMessage(phoneNumberId: string, accessToken: string, to: string, text: string): Promise<any>;
     sendImageMessage(phoneNumberId: string, accessToken: string, to: string, imageUrl: string, caption?: string): Promise<any>;
     sendDocumentMessage(phoneNumberId: string, accessToken: string, to: string, documentUrl: string, filename: string, caption?: string): Promise<any>;
@@ -118,9 +80,9 @@ export declare class WhatsappService {
     disconnectWhatsApp(userId: string, companyId: string): Promise<void>;
     getWhatsAppStatus(userId: string, companyId: string): Promise<{
         connected: boolean;
-        phoneNumber: string;
-        connectedAt: Date;
-        wabaId: string;
+        phoneNumber: any;
+        connectedAt: any;
+        wabaId: any;
     }>;
     getMessageTemplates(wabaId: string, accessToken: string): Promise<any[]>;
     createMessageTemplate(wabaId: string, accessToken: string, template: any): Promise<any>;

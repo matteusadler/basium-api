@@ -78,6 +78,7 @@ let PropertiesService = class PropertiesService {
             data: {
                 companyId,
                 code,
+                title: dto.title,
                 type: dto.type,
                 purpose: dto.purpose,
                 status: dto.status || 'AVAILABLE',
@@ -135,6 +136,11 @@ let PropertiesService = class PropertiesService {
         if (!property) {
             throw new common_1.NotFoundException('Imóvel não encontrado');
         }
+        const contractCount = await this.prisma.contract.count({ where: { propertyId: id } });
+        if (contractCount > 0) {
+            throw new common_1.BadRequestException(`Este imóvel possui ${contractCount} contrato(s) vinculado(s) e não pode ser excluído. Encerre os contratos antes de excluir o imóvel.`);
+        }
+        await this.prisma.propertyMedia.deleteMany({ where: { propertyId: id } });
         return this.prisma.property.delete({ where: { id } });
     }
     async addMedia(id, companyId, mediaData) {

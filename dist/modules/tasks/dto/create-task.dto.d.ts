@@ -1,5 +1,5 @@
 export declare class CreateTaskDto {
-    leadId: string;
+    leadId?: string;
     title: string;
     description?: string;
     type: string;

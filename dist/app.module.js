@@ -21,8 +21,6 @@ const tasks_module_1 = require("./modules/tasks/tasks.module");
 const dashboard_module_1 = require("./modules/dashboard/dashboard.module");
 const erp_module_1 = require("./modules/erp/erp.module");
 const ai_module_1 = require("./modules/ai/ai.module");
-const flows_module_1 = require("./modules/flows/flows.module");
-const notifications_module_1 = require("./modules/notifications/notifications.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -48,8 +46,6 @@ exports.AppModule = AppModule = __decorate([
             dashboard_module_1.DashboardModule,
             erp_module_1.ErpModule,
             ai_module_1.AiModule,
-            flows_module_1.FlowsModule,
-            notifications_module_1.NotificationsModule,
         ],
     })
 ], AppModule);

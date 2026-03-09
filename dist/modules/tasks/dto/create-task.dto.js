@@ -16,7 +16,8 @@ class CreateTaskDto {
 }
 exports.CreateTaskDto = CreateTaskDto;
 __decorate([
-    (0, swagger_1.ApiProperty)({ description: 'Lead ID to link task to' }),
+    (0, swagger_1.ApiPropertyOptional)({ description: 'Lead ID to link task to' }),
+    (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], CreateTaskDto.prototype, "leadId", void 0);
