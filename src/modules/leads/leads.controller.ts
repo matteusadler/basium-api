@@ -33,6 +33,7 @@ export class LeadsController {
   @Get()
   @ApiOperation({ summary: 'List leads with filters' })
   async findAll(@CurrentUser() user: any, @Query() filters: LeadFiltersDto) {
+    if (user.role === 'CORRETOR') filters.userId = user.id
     return this.leadsService.findAll(user.companyId, filters)
   }
 
@@ -42,7 +43,7 @@ export class LeadsController {
     @Param('pipelineId') pipelineId: string,
     @CurrentUser() user: any,
   ) {
-    return this.leadsService.findByStage(user.companyId, pipelineId)
+    return this.leadsService.findByStage(user.companyId, pipelineId, user.role === 'CORRETOR' ? user.id : undefined)
   }
 
   @Get('stats')

@@ -30,10 +30,12 @@ let LeadsController = class LeadsController {
         this.leadsService = leadsService;
     }
     async findAll(user, filters) {
+        if (user.role === 'CORRETOR')
+            filters.userId = user.id;
         return this.leadsService.findAll(user.companyId, filters);
     }
     async findByStage(pipelineId, user) {
-        return this.leadsService.findByStage(user.companyId, pipelineId);
+        return this.leadsService.findByStage(user.companyId, pipelineId, user.role === 'CORRETOR' ? user.id : undefined);
     }
     async getStats(user, userId) {
         return this.leadsService.getStats(user.companyId, userId);

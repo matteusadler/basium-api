@@ -1,4 +1,7 @@
 import { Module } from '@nestjs/common'
+import { APP_GUARD } from '@nestjs/core'
+import { ThrottlerGuard } from '@nestjs/throttler'
+import { RolesGuard } from './modules/auth/guards/roles.guard'
 import { ConfigModule } from '@nestjs/config'
 import { ScheduleModule } from '@nestjs/schedule'
 import { ThrottlerModule } from '@nestjs/throttler'

@@ -1,5 +1,6 @@
 import { Controller, Post, Body, Get, UseGuards } from '@nestjs/common'
 import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger'
+import { Throttle } from '@nestjs/throttler'
 import { AuthService } from './auth.service'
 import { JwtAuthGuard } from './guards/jwt-auth.guard'
 import { CurrentUser } from './decorators/current-user.decorator'
@@ -15,6 +16,7 @@ export class AuthController {
     return this.authService.register(body)
   }
 
+  @Throttle({ default: { ttl: 60000, limit: 5 } })
   @Post('login')
   @ApiOperation({ summary: 'Login with email & password' })
   async login(@Body() body: { email: string; password: string }) {

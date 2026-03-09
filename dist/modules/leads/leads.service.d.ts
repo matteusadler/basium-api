@@ -22,7 +22,7 @@ export declare class LeadsService {
             totalPages: number;
         };
     }>;
-    findByStage(companyId: string, pipelineId: string): Promise<any>;
+    findByStage(companyId: string, pipelineId: string, userId?: string): Promise<any>;
     findOne(id: string, companyId: string): Promise<any>;
     create(companyId: string, userId: string, dto: CreateLeadDto): Promise<any>;
     update(id: string, companyId: string, userId: string, dto: UpdateLeadDto): Promise<any>;

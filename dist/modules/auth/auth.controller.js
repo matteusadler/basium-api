@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
+const throttler_1 = require("@nestjs/throttler");
 const auth_service_1 = require("./auth.service");
 const jwt_auth_guard_1 = require("./guards/jwt-auth.guard");
 const current_user_decorator_1 = require("./decorators/current-user.decorator");
@@ -46,6 +47,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "register", null);
 __decorate([
+    (0, throttler_1.Throttle)({ default: { ttl: 60000, limit: 5 } }),
     (0, common_1.Post)('login'),
     (0, swagger_1.ApiOperation)({ summary: 'Login with email & password' }),
     __param(0, (0, common_1.Body)()),

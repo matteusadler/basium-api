@@ -94,7 +94,7 @@ export class LeadsService {
     }
   }
 
-  async findByStage(companyId: string, pipelineId: string) {
+  async findByStage(companyId: string, pipelineId: string, userId?: string) {
     const pipeline = await this.prisma.pipeline.findFirst({
       where: { id: pipelineId, companyId },
       include: {
@@ -102,7 +102,7 @@ export class LeadsService {
           orderBy: { order: 'asc' },
           include: {
             leads: {
-              where: { status: 'ACTIVE' },
+              where: { status: 'ACTIVE', ...(userId ? { userId } : {}) },
               orderBy: { createdAt: 'desc' },
               include: {
                 _count: {
