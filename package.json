@@ -4,7 +4,7 @@
   "description": "Basium CRM - NestJS Backend API",
   "scripts": {
     "build": "nest build",
-    "postinstall": "npx prisma generate --schema=/app/packages/database/prisma/schema.prisma || npx prisma generate --schema=./packages/database/prisma/schema.prisma || true",
+    "postinstall": "npm rebuild bcrypt --build-from-source",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:prod": "node dist/main",
