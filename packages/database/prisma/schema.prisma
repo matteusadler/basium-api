@@ -596,6 +596,7 @@ model Property {
   companyId          String
   company            Company                @relation(fields: [companyId], references: [id], onDelete: Cascade)
   code               String
+  title              String?
   type               String
   purpose            String
   status             String
