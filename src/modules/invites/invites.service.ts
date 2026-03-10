@@ -11,7 +11,7 @@ export class InvitesService {
     private emailService: EmailService,
   ) {}
 
-  async create(companyId: string, createdBy: string, inviterName: string, data: {
+  async create(companyId: string, createdBy: string, inviterNameParam: string, data: {
     email: string
     name?: string
     role: string
@@ -19,6 +19,8 @@ export class InvitesService {
   }) {
     const company = await this.prisma.company.findUnique({ where: { id: companyId } })
     if (!company) throw new NotFoundException('Empresa não encontrada')
+    const inviter = await this.prisma.user.findUnique({ where: { id: createdBy }, select: { name: true } })
+    const inviterName = inviter?.name || inviterNameParam || 'Equipe Basium'
 
     const expiresInHours = data.expiresInHours || 48
     const expiresAt = new Date(Date.now() + expiresInHours * 60 * 60 * 1000)
