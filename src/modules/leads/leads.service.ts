@@ -72,6 +72,7 @@ export class LeadsService {
         include: {
           stage: { select: { id: true, name: true, color: true } },
           pipeline: { select: { id: true, name: true } },
+          user: { select: { id: true, name: true } },
           _count: {
             select: { tasks: true, notes: true, attachments: true, conversations: true },
           },
