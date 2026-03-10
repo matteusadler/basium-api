@@ -25,7 +25,7 @@ export class NotificationsService {
         type,
         title,
         body,
-        data: data ? (data as unknown) : undefined,
+        data: data ? (data as any) : undefined,
       },
     })
     await this.sendPushNotification(userId, { title, body, data: notification.data })
@@ -104,7 +104,7 @@ export class NotificationsService {
   async savePushSubscription(userId: string, subscription: Record<string, unknown>) {
     await this.prisma.user.update({
       where: { id: userId },
-      data: { pushSubscription: subscription as unknown },
+      data: { pushSubscription: subscription as any },
     })
     return { success: true }
   }

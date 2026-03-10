@@ -4,12 +4,12 @@ export declare class PropertiesController {
     constructor(propertiesService: PropertiesService);
     findAll(user: any, filters: any): Promise<any>;
     getStats(user: any): Promise<{
-        total: any;
-        available: any;
-        rented: any;
-        sold: any;
-        totalSaleValue: any;
-        totalRentValue: any;
+        total: number;
+        available: number;
+        rented: number;
+        sold: number;
+        totalSaleValue: number;
+        totalRentValue: number;
     }>;
     getAddressByCep(cep: string): Promise<{
         street: any;
@@ -22,8 +22,26 @@ export declare class PropertiesController {
     create(user: any, dto: any): Promise<any>;
     update(id: string, user: any, dto: any): Promise<any>;
     delete(id: string, user: any): Promise<any>;
-    addMedia(id: string, user: any, mediaData: any): Promise<any>;
-    removeMedia(mediaId: string, user: any): Promise<any>;
+    addMedia(id: string, user: any, mediaData: any): Promise<{
+        id: string;
+        createdAt: Date;
+        type: string;
+        order: number;
+        propertyId: string;
+        url: string;
+        thumbnailUrl: string | null;
+        isCover: boolean;
+    }>;
+    removeMedia(mediaId: string, user: any): Promise<{
+        id: string;
+        createdAt: Date;
+        type: string;
+        order: number;
+        propertyId: string;
+        url: string;
+        thumbnailUrl: string | null;
+        isCover: boolean;
+    }>;
     generateDescription(id: string, user: any): Promise<{
         description: string;
     }>;

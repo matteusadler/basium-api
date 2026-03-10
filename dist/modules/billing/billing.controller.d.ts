@@ -5,17 +5,72 @@ import { CreateCheckoutSessionDto, CreatePortalSessionDto } from './dto/billing.
 export declare class BillingController {
     private billingService;
     constructor(billingService: BillingService);
-    getPlans(): Promise<any>;
+    getPlans(): Promise<{
+        id: string;
+        name: string;
+        stripePriceIdMonthly: string;
+        stripePriceIdYearly: string;
+        maxLeads: number;
+        maxUsers: number;
+        maxWhatsappNumbers: number;
+        maxPipelines: number;
+        maxFlows: number;
+        maxFlowExecutions: number;
+        storageGb: number;
+        hasAi: boolean;
+        hasCopilot: boolean;
+        hasFlowBuilder: boolean;
+        hasPortals: boolean;
+        trialDays: number;
+    }[]>;
     getSubscription(user: any): Promise<{
         company: {
-            id: any;
-            name: any;
-            planStatus: any;
-            trialEndsAt: any;
+            id: string;
+            name: string;
+            planStatus: import(".prisma/client").$Enums.PlanStatus;
+            trialEndsAt: Date;
         };
-        plan: any;
-        subscription: any;
-        usage: any;
+        plan: {
+            id: string;
+            name: string;
+            stripePriceIdMonthly: string;
+            stripePriceIdYearly: string;
+            maxLeads: number;
+            maxUsers: number;
+            maxWhatsappNumbers: number;
+            maxPipelines: number;
+            maxFlows: number;
+            maxFlowExecutions: number;
+            storageGb: number;
+            hasAi: boolean;
+            hasCopilot: boolean;
+            hasFlowBuilder: boolean;
+            hasPortals: boolean;
+            trialDays: number;
+        };
+        subscription: {
+            id: string;
+            companyId: string;
+            createdAt: Date;
+            stripeSubId: string;
+            status: import(".prisma/client").$Enums.SubStatus;
+            currentPeriodStart: Date;
+            currentPeriodEnd: Date;
+            cancelAtPeriodEnd: boolean;
+        };
+        usage: {
+            id: string;
+            companyId: string;
+            updatedAt: Date;
+            leadsCount: number;
+            usersCount: number;
+            propertiesCount: number;
+            contractsCount: number;
+            activeFlows: number;
+            flowExecMonth: number;
+            storageBytes: bigint;
+            pdfCount: number;
+        };
     }>;
     getInvoices(user: any, limit?: number): Promise<{
         id: string;

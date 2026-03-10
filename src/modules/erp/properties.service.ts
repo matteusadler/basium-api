@@ -27,7 +27,7 @@ export class PropertiesService {
     }
     if (filters?.bedrooms) where.bedrooms = { gte: parseInt(filters.bedrooms) }
 
-    return this.prisma.property.findMany({
+    return (this.prisma.property as any).findMany({
       where,
       include: {
         owners: { include: { owner: true } },
@@ -39,7 +39,7 @@ export class PropertiesService {
   }
 
   async findOne(id: string, companyId: string) {
-    const property = await this.prisma.property.findFirst({
+    const property = await (this.prisma.property as any).findFirst({
       where: { id, companyId },
       include: {
         owners: { include: { owner: true } },
@@ -65,7 +65,7 @@ export class PropertiesService {
     const count = await this.prisma.property.count({ where: { companyId } })
     const code = `IMV${String(count + 1).padStart(4, '0')}`
 
-    return this.prisma.property.create({
+    return (this.prisma.property as any).create({
       data: {
         companyId,
         code,
@@ -107,7 +107,7 @@ export class PropertiesService {
   }
 
   async update(id: string, companyId: string, dto: any) {
-    const property = await this.prisma.property.findFirst({
+    const property = await (this.prisma.property as any).findFirst({
       where: { id, companyId },
     })
 
@@ -115,7 +115,7 @@ export class PropertiesService {
       throw new NotFoundException('Imóvel não encontrado')
     }
 
-    return this.prisma.property.update({
+    return (this.prisma.property as any).update({
       where: { id },
       data: {
         ...dto,
@@ -125,7 +125,7 @@ export class PropertiesService {
   }
 
   async delete(id: string, companyId: string) {
-    const property = await this.prisma.property.findFirst({
+    const property = await (this.prisma.property as any).findFirst({
       where: { id, companyId },
     })
 
@@ -138,11 +138,11 @@ export class PropertiesService {
       throw new BadRequestException(`Este imóvel possui ${contractCount} contrato(s) vinculado(s) e não pode ser excluído. Encerre os contratos antes de excluir o imóvel.`)
     }
     await this.prisma.propertyMedia.deleteMany({ where: { propertyId: id } })
-    return this.prisma.property.delete({ where: { id } })
+    return (this.prisma.property as any).delete({ where: { id } })
   }
 
   async addMedia(id: string, companyId: string, mediaData: any) {
-    const property = await this.prisma.property.findFirst({
+    const property = await (this.prisma.property as any).findFirst({
       where: { id, companyId },
     })
 
@@ -182,7 +182,7 @@ export class PropertiesService {
   }
 
   async setAiDescription(id: string, companyId: string, description: string) {
-    const property = await this.prisma.property.findFirst({
+    const property = await (this.prisma.property as any).findFirst({
       where: { id, companyId },
     })
 
@@ -190,7 +190,7 @@ export class PropertiesService {
       throw new NotFoundException('Imóvel não encontrado')
     }
 
-    return this.prisma.property.update({
+    return (this.prisma.property as any).update({
       where: { id },
       data: { aiDescription: description },
     })
@@ -250,7 +250,7 @@ export class PropertiesService {
 
   /** Detalhe público: um imóvel por ID, status AVAILABLE, sem autenticação */
   async findOnePublic(id: string) {
-    const property = await this.prisma.property.findFirst({
+    const property = await (this.prisma.property as any).findFirst({
       where: { id, status: 'AVAILABLE' },
       include: { media: true },
     })

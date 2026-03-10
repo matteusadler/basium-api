@@ -18,10 +18,21 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@basium/database": ["../../packages/database"],
-      "@basium/shared": ["../../packages/shared"]
-    }
+      "@basium/database": [
+        "../../packages/database"
+      ],
+      "@basium/shared": [
+        "../../packages/shared"
+      ]
+    },
+    "noEmitOnError": false
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "src/workers_disabled"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/workers_disabled"
+  ]
 }

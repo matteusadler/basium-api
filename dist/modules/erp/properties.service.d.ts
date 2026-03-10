@@ -7,8 +7,26 @@ export declare class PropertiesService {
     create(companyId: string, userId: string, dto: any): Promise<any>;
     update(id: string, companyId: string, dto: any): Promise<any>;
     delete(id: string, companyId: string): Promise<any>;
-    addMedia(id: string, companyId: string, mediaData: any): Promise<any>;
-    removeMedia(mediaId: string, companyId: string): Promise<any>;
+    addMedia(id: string, companyId: string, mediaData: any): Promise<{
+        id: string;
+        createdAt: Date;
+        type: string;
+        order: number;
+        propertyId: string;
+        url: string;
+        thumbnailUrl: string | null;
+        isCover: boolean;
+    }>;
+    removeMedia(mediaId: string, companyId: string): Promise<{
+        id: string;
+        createdAt: Date;
+        type: string;
+        order: number;
+        propertyId: string;
+        url: string;
+        thumbnailUrl: string | null;
+        isCover: boolean;
+    }>;
     setAiDescription(id: string, companyId: string, description: string): Promise<any>;
     getAddressByCep(cep: string): Promise<{
         street: any;
@@ -17,7 +35,24 @@ export declare class PropertiesService {
         state: any;
         zipCode: string;
     }>;
-    findAllPublic(filters?: any): Promise<any>;
+    findAllPublic(filters?: any): Promise<{
+        id: any;
+        code: any;
+        title: string;
+        type: any;
+        purpose: any;
+        salePrice: any;
+        rentPrice: any;
+        area: any;
+        bedrooms: any;
+        bathrooms: any;
+        parkingSpaces: any;
+        city: any;
+        neighborhood: any;
+        state: any;
+        description: any;
+        media: any;
+    }[]>;
     findOnePublic(id: string): Promise<{
         street: any;
         number: any;
@@ -44,11 +79,11 @@ export declare class PropertiesService {
     }>;
     private toPublicProperty;
     getStats(companyId: string): Promise<{
-        total: any;
-        available: any;
-        rented: any;
-        sold: any;
-        totalSaleValue: any;
-        totalRentValue: any;
+        total: number;
+        available: number;
+        rented: number;
+        sold: number;
+        totalSaleValue: number;
+        totalRentValue: number;
     }>;
 }

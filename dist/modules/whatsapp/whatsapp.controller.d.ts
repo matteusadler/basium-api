@@ -9,9 +9,9 @@ export declare class WhatsappController {
     }>;
     getStatus(user: any): Promise<{
         connected: boolean;
-        phoneNumber: any;
-        connectedAt: any;
-        wabaId: any;
+        phoneNumber: string;
+        connectedAt: Date;
+        wabaId: string;
     }>;
     handleEmbeddedSignupCallback(user: any, body: {
         code: string;
