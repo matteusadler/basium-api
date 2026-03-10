@@ -8,7 +8,11 @@ export class EmailService {
   private readonly fromEmail = process.env.RESEND_FROM_EMAIL || 'convites@basium.com.br'
 
   constructor() {
-    this.resend = new Resend(process.env.RESEND_API_KEY)
+    const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) {
+      this.logger.warn('RESEND_API_KEY não configurada — emails desabilitados')
+    }
+    this.resend = new Resend(apiKey || 'placeholder')
   }
 
   async sendInvite(params: {
