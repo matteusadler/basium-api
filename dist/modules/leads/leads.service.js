@@ -86,8 +86,15 @@ let LeadsService = class LeadsService {
             }),
             this.prisma.lead.count({ where }),
         ]);
+        const userIds = [...new Set(leads.map(l => l.userId).filter(Boolean))];
+        const users = userIds.length > 0 ? await this.prisma.user.findMany({
+            where: { id: { in: userIds } },
+            select: { id: true, name: true }
+        }) : [];
+        const userMap = Object.fromEntries(users.map(u => [u.id, u]));
+        const enrichedLeads = leads.map(l => ({ ...l, user: userMap[l.userId] || null }));
         return {
-            data: leads,
+            data: enrichedLeads,
             meta: {
                 total,
                 page,

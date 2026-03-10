@@ -10,7 +10,11 @@ export declare class LeadsController {
     private leadsService;
     constructor(leadsService: LeadsService);
     findAll(user: any, filters: LeadFiltersDto): Promise<{
-        data: ({
+        data: {
+            user: {
+                id: string;
+                name: string;
+            };
             pipeline: {
                 id: string;
                 name: string;
@@ -26,7 +30,6 @@ export declare class LeadsController {
                 conversations: number;
                 notes: number;
             };
-        } & {
             id: string;
             companyId: string;
             name: string;
@@ -68,7 +71,7 @@ export declare class LeadsController {
             closedAt: Date | null;
             isFavorite: boolean;
             lastInteraction: Date | null;
-        })[];
+        }[];
         meta: {
             total: number;
             page: number;

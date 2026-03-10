@@ -14,7 +14,11 @@ export declare class LeadsService {
     private notifications;
     constructor(prisma: PrismaService, flowExecutor: FlowExecutorService, notifications: NotificationsService);
     findAll(companyId: string, filters: LeadFiltersDto): Promise<{
-        data: ({
+        data: {
+            user: {
+                id: string;
+                name: string;
+            };
             pipeline: {
                 id: string;
                 name: string;
@@ -30,7 +34,6 @@ export declare class LeadsService {
                 conversations: number;
                 notes: number;
             };
-        } & {
             id: string;
             companyId: string;
             name: string;
@@ -72,7 +75,7 @@ export declare class LeadsService {
             closedAt: Date | null;
             isFavorite: boolean;
             lastInteraction: Date | null;
-        })[];
+        }[];
         meta: {
             total: number;
             page: number;
