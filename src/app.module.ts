@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common'
 import { APP_GUARD } from '@nestjs/core'
 import { ThrottlerGuard } from '@nestjs/throttler'
 import { RolesGuard } from './modules/auth/guards/roles.guard'
+import { TeamsModule } from './modules/teams/teams.module'
+import { InvitesModule } from './modules/invites/invites.module'
 import { ConfigModule } from '@nestjs/config'
 import { ScheduleModule } from '@nestjs/schedule'
 import { ThrottlerModule } from '@nestjs/throttler'
@@ -36,6 +38,8 @@ import { AiModule } from './modules/ai/ai.module'
     ScheduleModule.forRoot(),
 
     // Rate limiting
+    TeamsModule,
+    InvitesModule,
     ThrottlerModule.forRoot([{
       ttl: 60000,
       limit: 100,

@@ -8,6 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
+const teams_module_1 = require("./modules/teams/teams.module");
+const invites_module_1 = require("./modules/invites/invites.module");
 const config_1 = require("@nestjs/config");
 const schedule_1 = require("@nestjs/schedule");
 const throttler_1 = require("@nestjs/throttler");
@@ -32,6 +34,8 @@ exports.AppModule = AppModule = __decorate([
                 envFilePath: ['.env', '../../.env'],
             }),
             schedule_1.ScheduleModule.forRoot(),
+            teams_module_1.TeamsModule,
+            invites_module_1.InvitesModule,
             throttler_1.ThrottlerModule.forRoot([{
                     ttl: 60000,
                     limit: 100,
