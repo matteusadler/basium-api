@@ -51,7 +51,7 @@ export class EmailService {
               </p>
               <div style="text-align: center; margin: 32px 0;">
                 <a href="${params.inviteLink}" 
-                   style="background: #4f46e5; color: wte; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-size: 16px; font-weight: 600;">
+                   style="background: #4f46e5; color: white; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-size: 16px; font-weight: 600;">
                   Aceitar Convite
                 </a>
               </div>
