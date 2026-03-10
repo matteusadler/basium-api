@@ -1,0 +1,5 @@
+[deploy]
+startCommand = "node dist/main"
+
+[build]
+buildCommand = "npm ci && prisma generate --schema=prisma/schema.prisma && npm run build"
